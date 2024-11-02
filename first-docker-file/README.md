@@ -18,10 +18,9 @@ Steps:
 
     - sudo apt update && sudo apt-get install docker.io -y
 
-    - sudo usermod docker ubuntu
-    
-
-    - systemctl restart docker
+    - sudo usermod -aG docker ubuntu
+S
+    - Relogin into the instance
 
     - docker run hello-world
 
