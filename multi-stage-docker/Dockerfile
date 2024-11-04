@@ -18,12 +18,12 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-#COPY --from=builder /app/venv /app/venv
+COPY --from=builder /app/venv /app/venv
 COPY --from=builder /app /app
 
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
 RUN cd devops
 
-ENTRYPOINT ["python3"]
+ENTRYPOINT ["/app/venv/bin/python"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
