@@ -14,7 +14,7 @@ RUN python3 -m venv /app/venv && \
 
 # Stage 2: Final, lightweight image
 
-FROM gcr.io/distroless/python3
+FROM python:3.11-slim
 
 WORKDIR /app
 
