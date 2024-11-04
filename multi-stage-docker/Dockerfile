@@ -21,6 +21,8 @@ WORKDIR /app
 COPY --from=builder /app/venv /app/venv
 COPY --from=builder /app /app
 
+RUN ls /app/venv/bin
+
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
 RUN cd devops
