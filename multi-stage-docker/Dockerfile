@@ -14,18 +14,16 @@ RUN python3 -m venv /app/venv && \
 
 # Stage 2: Final, lightweight image
 
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
 COPY --from=builder /app/venv /app/venv
 COPY --from=builder /app /app
 
-RUN ls /app/venv/bin
-
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
 RUN cd devops
 
-ENTRYPOINT ["/app/venv/bin/python"]
+ENTRYPOINT ["/app/venv/bin/python3"]
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
