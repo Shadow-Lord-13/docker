@@ -29,12 +29,12 @@ WORKDIR /app
 COPY --from=builder /app /app
 
 # Copy only site-packages from builder’s virtual environment
-COPY --from=builder /app/venv/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
+#COPY --from=builder /app/venv/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 # Set environment path to use the site-packages
 ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages"
 
-#RUN cd devops
+RUN cd devops
 # Set the virtual environment's Python as default
 # ENV PATH="/app/venv/bin:$PATH"
 
@@ -42,4 +42,4 @@ ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages"
 EXPOSE 8000
 
 # Run Django server using full path to ensure it uses the virtual environment
-CMD ["python3", "devops/manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
