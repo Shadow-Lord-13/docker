@@ -28,8 +28,11 @@ COPY --from=builder /app /app
 # Verify that the Django package exists in the final image
 RUN ls /app/venv/lib/python*/site-packages/django
 
-RUN cd devops
+#RUN cd devops
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
 
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+RUN python3 -m django --version
+
+# Run Django server using full path to ensure it uses the virtual environment
+CMD ["/app/venv/bin/python3", "devops/manage.py", "runserver", "0.0.0.0:8000"]
