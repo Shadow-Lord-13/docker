@@ -32,11 +32,11 @@ COPY --from=builder /app /app
 #COPY --from=builder /app/venv/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 # Set environment path to use the site-packages
-ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages"
+#ENV PYTHONPATH="/usr/local/lib/python3.12/site-packages"
 
 RUN cd devops
 # Set the virtual environment's Python as default
-# ENV PATH="/app/venv/bin:$PATH"
+ENV PATH="/app/venv/bin:$PATH"
 
 # Expose the port Django will run on
 EXPOSE 8000
