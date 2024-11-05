@@ -17,7 +17,7 @@ ENV PATH="/app/venv/bin:$PATH"
 
 # Stage 2: Final, lightweight image
 
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
 WORKDIR /app
 
