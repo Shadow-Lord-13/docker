@@ -32,7 +32,7 @@ RUN ls /app/venv/lib/python*/site-packages/django
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
 
-RUN python3 -m django --version
+RUN /app/venv/bin/python3 -m django --version
 
 # Run Django server using full path to ensure it uses the virtual environment
 CMD ["/app/venv/bin/python3", "devops/manage.py", "runserver", "0.0.0.0:8000"]
