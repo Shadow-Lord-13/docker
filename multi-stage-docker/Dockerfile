@@ -23,7 +23,11 @@ FROM python:3.12-slim
 WORKDIR /app
 
 COPY --from=builder /app /app
-#COPY --from=builder /app/venv /app/venv
+
+# Re-create virtual environment in the final stage
+RUN python3 -m venv /app/venv && \
+    /app/venv/bin/pip install --upgrade pip && \
+    /app/venv/bin/pip install -r requirements.txt
 
 # Verify that the Django package exists in the final image
 RUN ls /app/venv/bin
@@ -31,8 +35,6 @@ RUN ls /app/venv/bin
 #RUN cd devops
 # Set the virtual environment's Python as default
 ENV PATH="/app/venv/bin:$PATH"
-
-RUN /app/venv/bin/python3 -m django --version
 
 # Run Django server using full path to ensure it uses the virtual environment
 CMD ["/app/venv/bin/python3", "devops/manage.py", "runserver", "0.0.0.0:8000"]
