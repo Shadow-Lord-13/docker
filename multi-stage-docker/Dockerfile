@@ -10,8 +10,10 @@ COPY devops /app
 RUN apt update && apt-get install -y python3 python3-pip python3-venv && \
     python3 -m venv /app/venv && \
     /app/venv/bin/pip install --upgrade pip && \
-    /app/venv/bin/pip install django && \
     /app/venv/bin/pip install -r requirements.txt
+
+# Check if Django is installed in the virtual environment
+RUN python -m django --version
 
 # Stage 2: Final, lightweight image
 
