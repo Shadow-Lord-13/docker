@@ -13,6 +13,10 @@ RUN python3 -m venv /app/venv && \
     /app/venv/bin/pip install --upgrade pip && \
     /app/venv/bin/pip install -r requirements.txt
 
+
+# Set the virtual environment's Python as default
+ENV PATH="/app/venv/bin:$PATH"
+
 # Check if Django is installed in the virtual environment
 RUN /app/venv/bin/python3 -m django --version
 
@@ -25,9 +29,9 @@ WORKDIR /app
 COPY --from=builder /app /app
 
 # Re-create virtual environment in the final stage
-RUN python3 -m venv /app/venv && \
-    /app/venv/bin/pip install --upgrade pip && \
-    /app/venv/bin/pip install -r requirements.txt
+# RUN python3 -m venv /app/venv && \
+#     /app/venv/bin/pip install --upgrade pip && \
+#     /app/venv/bin/pip install -r requirements.txt
 
 # Verify that the Django package exists in the final image
 RUN ls /app/venv/bin
