@@ -36,7 +36,7 @@ COPY --from=builder /app /app
 
 RUN cd devops
 # Set the virtual environment's Python as default
-ENV PATH="/app/venv/bin:$PATH"
+ENV PYTHONPATH="/app/venv/bin:$PYTHONPATH"
 
 # Expose the port Django will run on
 EXPOSE 8000
