@@ -26,7 +26,7 @@ COPY --from=builder /app /app
 #COPY --from=builder /app/venv /app/venv
 
 # Verify that the Django package exists in the final image
-RUN ls /app/venv/lib/python*/site-packages/django
+RUN ls /app/venv/bin
 
 #RUN cd devops
 # Set the virtual environment's Python as default
