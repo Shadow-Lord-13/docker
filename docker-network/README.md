@@ -21,9 +21,9 @@ Flow:
     - docker run --network secure-bridge --name finance -d nginx:latest
 
 - Get IP address for each containers using inspect:
-    - docker inspect login -> "IPAddress": "00.17.0.2",
-    - docker inspect logout -> "IPAddress": "00.17.0.3",
-    - docker inspect finance -> "IPAddress": "00.18.0.2"
+    - docker inspect login -> copy "IPAddress": "00.17.0.2",
+    - docker inspect logout -> copy "IPAddress": "00.17.0.3",
+    - docker inspect finance -> copy "IPAddress": "00.18.0.2"
 
 - Opens an interactive Bash shell session inside the running login container
     - docker exec -it login /bin/bash
