@@ -70,7 +70,7 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 ```
 $ docker-compose --version
 ```
-3. Start docker Deamon: Check the installed version to ensure it’s correctly installed.
+4. Start docker Deamon.
 
 ```
 $ sudo systemctl start docker
