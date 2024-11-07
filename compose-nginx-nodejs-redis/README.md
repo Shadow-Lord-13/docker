@@ -52,6 +52,30 @@ When deploying the application, docker compose maps port 80 of the nginx service
 > ℹ️ **_INFO_**  
 > Redis runs on port 6379 by default. Make sure port 6379 on the host is not being used by another container, otherwise the port should be changed.
 
+## Install docker compose
+
+1. Download Docker Compose: Download the latest version of Docker Compose from the GitHub releases page. You can also specify a version to ensure compatibility.
+
+```
+$ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+```
+2. Apply Executable Permissions: Make the downloaded binary executable.
+
+```
+$ sudo chmod +x /usr/local/bin/docker-compose
+```
+
+3. Verify Installation: Check the installed version to ensure it’s correctly installed.
+
+```
+$ docker-compose --version
+```
+3. Start docker Deamon: Check the installed version to ensure it’s correctly installed.
+
+```
+$ sudo systemctl start docker
+```
+
 ## Deploy with docker compose
 
 ```
@@ -103,5 +127,5 @@ web2: Total number of visits is: 3
 ## Stop and remove the containers
 
 ```
-$ docker compose down
+$ docker-compose down
 ```
